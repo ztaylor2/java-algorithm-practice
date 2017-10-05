@@ -1,23 +1,24 @@
+// problem: calculate and print the fibonacci number at n +-i
+
 import java.util.Scanner;
 import java.util.Hashtable;
 
 public class Fibonacci {
    
-   // method to calculate fib numbers
    public static int fibonacciRecursion(int n, Hashtable<Integer, Integer> fibonacciNumbers) {
-      // return starting numbers
+      // define starting numbers to begin fib sequence, 0 and 1
       if(n <= 0) {
          return 0;
       }else if(n == 1) {
          return 1;
-      }else if(!fibonacciNumbers.containsKey(n)) { // check to see if number is stored in hashtable. if not use recursion to calculate then store number in hashtable
+      }else if(!fibonacciNumbers.containsKey(n)) { // only use recursion if number is not already stored in hashtable to prevent repeat calculations and save time
          fibonacciNumbers.put(n, fibonacciRecursion(n - 1, fibonacciNumbers) + fibonacciRecursion(n - 2, fibonacciNumbers));
       }
-      return fibonacciNumbers.get(n); // return number from hashtable 
+      return fibonacciNumbers.get(n); // storying numbers in hashtable (memoization) instead of repeating calculation improves time from O(2^n) to O(n)
    }
    
    public static void main(String args[]) {
-      // create hashtable and input variables
+      // hashtable for quick lookup. key = index of fib number, value = value of fib number
       Hashtable<Integer, Integer> fibonacciNumbers = new Hashtable<Integer, Integer>();
       System.out.print("Input n: ");
       int n = new Scanner(System.in).nextInt();
