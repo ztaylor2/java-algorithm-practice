@@ -14,7 +14,25 @@ public class Fibonacci {
       }else if(!fibonacciNumbers.containsKey(n)) { // only use recursion if number is not already stored in hashtable to prevent repeat calculations and save time
          fibonacciNumbers.put(n, fibonacciRecursion(n - 1, fibonacciNumbers) + fibonacciRecursion(n - 2, fibonacciNumbers));
       }
-      return fibonacciNumbers.get(n); // storying numbers in hashtable (memoization) instead of repeating calculation improves time from O(2^n) to O(n)
+      return fibonacciNumbers.get(n); // storing numbers in hashtable (memoization) instead of repeating calculation improves time from O(2^n) to O(n)
+   }
+   
+   public static void printFibonacci(int index, int n, Hashtable<Integer, Integer> fibonacciNumbers) {
+      // print output of fibonacciRecursion method for specified interval
+      for(int i = n - index; i < n + index; i++) {
+         System.out.println(fibonacciRecursion(i, fibonacciNumbers));
+      }
+      fibonacciString(index, n, fibonacciNumbers);
+   }
+   
+   public static String fibonacciString(int index, int n, Hashtable<Integer, Integer> fibonacciNumbers) {
+      // print output of fibonacciRecursion method for specified interval
+      String s = "";
+      
+      for(int i = n - index; i < n + index; i++) {
+         s += fibonacciRecursion(i, fibonacciNumbers) + ", ";
+      }
+      return s;
    }
    
    public static void main(String args[]) {
@@ -24,6 +42,8 @@ public class Fibonacci {
       int n = new Scanner(System.in).nextInt();
       System.out.print("Input i: ");
       int index = new Scanner(System.in).nextInt();
+      
+      printFibonacci(index, n, fibonacciNumbers);
       
       // print output of fibonacciRecursion method for specified interval
       for(int i = n - index; i < n + index; i++) {
