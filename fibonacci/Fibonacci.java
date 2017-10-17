@@ -19,16 +19,16 @@ public class Fibonacci {
    
    public static void printFibonacci(int index, int n, Hashtable<Integer, Integer> fibonacciNumbers) {
       // print output of fibonacciRecursion method for specified interval
-      for(int i = n - index; i < n + index; i++) {
+      for(int i = n - index; i <= n + index; i++) {
          System.out.println(fibonacciRecursion(i, fibonacciNumbers));
       }
    }
    
-   public static String fibonacciString(int index, int n, Hashtable<Integer, Integer> fibonacciNumbers) {
+   public static String fibonacciTestOutput(int index, int n, Hashtable<Integer, Integer> fibonacciNumbers) {
       // print output of fibonacciRecursion method for specified interval
       String s = "";
       
-      for(int i = n - index; i < n + index; i++) {
+      for(int i = n - index; i <= n + index; i++) {
          s += fibonacciRecursion(i, fibonacciNumbers) + ", ";
       }
       return s;
@@ -43,10 +43,5 @@ public class Fibonacci {
       int index = new Scanner(System.in).nextInt();
       
       printFibonacci(index, n, fibonacciNumbers);
-      
-      // print output of fibonacciRecursion method for specified interval
-      for(int i = n - index; i < n + index; i++) {
-         System.out.println(fibonacciRecursion(i, fibonacciNumbers));
-      }
    }
 }
